@@ -11,4 +11,5 @@ function loadEnvironmentVariable(keyname) {
 
 module.exports = {
     secretKey: loadEnvironmentVariable('SECRET_KEY'),
+    mongodbUrl: loadEnvironmentVariable('MONGODB_URL')
 }
