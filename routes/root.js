@@ -2,8 +2,7 @@
 
 const { validatePostForm } = require("../validation/form");
 const { formIo } = require("../validation/form");
-const { createForm } = require("../controllers/form.controller");
-const { createProfile } = require("../controllers/profile.controller");
+const { initController } = require("../controllers/controller");
 
 module.exports = async function (fastify, opts) {
   fastify.route({
@@ -88,19 +87,6 @@ module.exports = async function (fastify, opts) {
         body: formIo,
       },
     },
-    async function (request, ...rest) {
-      const {
-        body: { formId },
-      } = request;
-
-      switch (formId) {
-        case "contact":
-          return createForm(request);
-        case "profile":
-          return createProfile(request);
-        default:
-          return { data: {}, message: "invalid form id"}
-      }
-    }
+    initController
   );
 };

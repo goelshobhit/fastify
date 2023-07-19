@@ -42,7 +42,7 @@ const handleAction = (action, formId, formIo, data) => {
   }
 };
 
-exports.createForm = async (request, reply) => {
+const create = async (request) => {
   const {
     body: { action, formId, data },
   } = request;
@@ -51,3 +51,10 @@ exports.createForm = async (request, reply) => {
 
   return handleAction(action, formId, formIo, data);
 };
+
+const list = async (request, reply) => {
+  const formItemList = [{ name: 1 }, { name: 2 }];
+  return { data: formItemList, message: "Form List" };
+};
+
+module.exports = { create, list };
