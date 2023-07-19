@@ -42,12 +42,11 @@ const handleAction = (action, formId, formIo, data) => {
   }
 };
 
-exports.createForm = async (request, reply) => {
+exports.createProfile = async (request, reply) => {
   const {
     body: { action, formId, data },
   } = request;
 
-  const formIo = require(`../assets/json/${formId}.json`);
 
-  return handleAction(action, formId, formIo, data);
+return { message: "Profile handler"};
 };

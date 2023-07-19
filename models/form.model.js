@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const formSchema = new mongoose.Schema({
-  name: String,
+  formId: String,
   age: String,
   gender: String,
   email: String,

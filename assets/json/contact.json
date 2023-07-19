@@ -1,0 +1,76 @@
+{
+  "formid": "Contact",
+  "title": "Contact Form",
+  "readonly": false,
+  "colSize": "col-6",
+  "keys": [],
+  "actions": ["add", "cancel", "edit", "delete", "submit"],
+  "sections": [
+    {
+      "sectionid": "Section 1",
+      "title": "tilename",
+      "readonly": false,
+      "colSize": "col-6",
+      "classes": "",
+      "columns": [
+        {
+          "field": "name",
+          "type": "text",
+          "label": "Name",
+          "component": "input",
+          "inline": false,
+          "colSize": "col-6",
+          "required": true,
+          "readOnly": false,
+          "defaultValue": "Dileep Kumar",
+          "options": {},
+          "classes": "",
+          "addattrs": "",
+          "placeholder": "Enter Name",
+          "hint": "Please enter hint..",
+          "xevents": "name",
+          "errorMessage": "",
+          "list": true
+        },
+        {
+          "field": "email",
+          "type": "text",
+          "label": "Email",
+          "component": "input",
+          "inline": false,
+          "colSize": "col-12",
+          "required": true,
+          "readOnly": false,
+          "defaultValue": "Dileep@gmail.com",
+          "options": {},
+          "classes": "",
+          "addattrs": "",
+          "placeholder": "Enter Your Email",
+          "hint": "Please enter hint..",
+          "xevents": "email",
+          "errorMessage": "Email should be validate",
+          "list": true
+        },
+        {
+          "field": "mobile",
+          "type": "number",
+          "label": "Number",
+          "component": "input",
+          "inline": false,
+          "colSize": "col-12",
+          "required": true,
+          "readOnly": false,
+          "defaultValue": "7668366582",
+          "options": {},
+          "classes": "",
+          "addattrs": "",
+          "placeholder": "Enter Your Number",
+          "hint": "Please enter hint..",
+          "xevents": "mobile",
+          "errorMessage": "Number should be validate",
+          "list": true
+        }
+      ]
+    }
+  ]
+}

@@ -2,11 +2,12 @@ const fp = require("fastify-plugin");
 const configuration = require("../config/configuration");
 
 module.exports = fp(function (fastify, opts, done) {
-  fastify.register(require("@fastify/mongodb"), {
-    forceClose: true,
-    url: configuration.mongodbUrl,
-    database: "prisma",
-  });
+  
+  // fastify.register(require("@fastify/mongodb"), {
+  //   forceClose: true,
+  //   url: configuration.mongodbUrl,
+  //   database: "prisma",
+  // });
 
   fastify.register(require("@fastify/jwt"), {
     secret: configuration.secretKey,

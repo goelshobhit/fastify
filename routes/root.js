@@ -1,6 +1,10 @@
 "use strict";
 
 const { validatePostForm } = require("../validation/form");
+const { formIo } = require("../validation/form");
+const { createForm } = require("../controllers/form.controller");
+const { createProfile } = require("../controllers/profile.controller");
+
 module.exports = async function (fastify, opts) {
   fastify.route({
     method: "OPTIONS",
@@ -30,13 +34,13 @@ module.exports = async function (fastify, opts) {
 
   fastify.post("/signup", async (req, reply) => {
     // some code
-    const response = await fastify.mongo.db
-    .collection("users")
-    .insertOne(req.body)
+    // const response = await fastify.mongo.db
+    //   .collection("users")
+    //   .insertOne(req.body);
 
     const token = fastify.jwt.sign({ username: req.body.name });
 
-    reply.send({ token, response });
+    reply.send({ token });
   });
 
   fastify.get(
@@ -72,6 +76,30 @@ module.exports = async function (fastify, opts) {
         return response;
       } catch (err) {
         throw err;
+      }
+    }
+  );
+
+  fastify.post(
+    "/auth/formio",
+    {
+      onRequest: [fastify.authenticate],
+      schema: {
+        body: formIo,
+      },
+    },
+    async function (request, ...rest) {
+      const {
+        body: { formId },
+      } = request;
+
+      switch (formId) {
+        case "contact":
+          return createForm(request);
+        case "profile":
+          return createProfile(request);
+        default:
+          return { data: {}, message: "invalid form id"}
       }
     }
   );
