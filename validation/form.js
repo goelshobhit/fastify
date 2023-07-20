@@ -9,7 +9,7 @@ const validatePostForm = {
   required: ["name", "age", "gender", "email"],
 };
 
-const formIo = {
+const formIoReqValidator = {
   type: "object",
   properties: {
     formId: { type: "string", minLength: 2 },
@@ -20,10 +20,19 @@ const formIo = {
     initData: { type: "object", minLength: 1 },
   },
   required: ["formId", "action"],
-  
 };
+
+const responseValidator = {
+  type: "object",
+  properties: {
+    data: "object",
+    message: "string",
+  },
+};
+
 
 module.exports = {
   validatePostForm,
-  formIo,
+  formIoReqValidator,
+  responseValidator,
 };

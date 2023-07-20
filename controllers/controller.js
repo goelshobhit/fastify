@@ -1,4 +1,4 @@
-const initController = async (req, ...reply) => {
+const formIoController = async (req, ...reply) => {
   const {
     body: { formId, action },
   } = req;
@@ -13,4 +13,4 @@ const initController = async (req, ...reply) => {
   return { message: `${formId} action not supported`}
 };
 
-module.exports = { initController };
+module.exports = { formIoController };

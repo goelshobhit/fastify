@@ -17,3 +17,5 @@ module.exports = async function (fastify, opts) {
     options: Object.assign({}, opts)
   })
 }
+
+// need to add session middleware

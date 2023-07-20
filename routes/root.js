@@ -1,8 +1,8 @@
 "use strict";
 
-const { validatePostForm } = require("../validation/form");
-const { formIo } = require("../validation/form");
-const { initController } = require("../controllers/controller");
+const { formIoReqValidator, responseValidator } = require("../validation/form");
+
+const { formIo } = require("../models/formio");
 
 module.exports = async function (fastify, opts) {
   fastify.route({
@@ -84,9 +84,13 @@ module.exports = async function (fastify, opts) {
     {
       onRequest: [fastify.authenticate],
       schema: {
-        body: formIo,
+        body: formIoReqValidator,
+        response: {
+          200,
+          schema: responseValidator,
+        }
       },
     },
-    initController
+    formIo
   );
 };
